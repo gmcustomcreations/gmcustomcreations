@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="G M Custom Creations - Bespoke Handcrafted Woodworking. Custom furniture, cabinetry, and unique creations.">
+    <title>G M Custom Creations | Bespoke Woodworking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap');
+        
+        :root {
+            --bg-dark: #111111;
+            --text-light: #F5F5F4;
+            --accent-gold: #C5A059;
+            --accent-olive: #556B2F;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        /* Change the Hero background image here */
+        .hero-bg {
+            background-image: linear-gradient(rgba(17,17,17,0.65), rgba(17,17,17,0.75)), 
+                             url('images/upscaled Hero2.jpg');   /* ←←← CHANGE THIS LINE */
+            background-size: cover;
+            background-position: center;
+        }
+        /* 
+           Instructions:
+           1. Put your image in gm-custom-creations-v2/images/hero.jpg
+           2. Or use any URL: url('https://your-image-link.jpg')
+           3. Use a large horizontal image (2000px+ wide) for best results
+        */
+        
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        
+        .gallery-img {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17,17,17,0.95);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 120%;
+            background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#111111]/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Logo Image - replace src with your logo -->
+                <img src="images/logo.png" alt="G M Custom Creations" class="h-16 w-auto object-contain">
+                <!-- Business name next to logo -->
+                <span class="heading-font text-2xl tracking-tight">G M Custom Creations</span>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-10 text-sm uppercase tracking-widest">
+                <a href="#home" onclick="smoothScrollTo('home')" class="nav-link">Home</a>
+                <a href="#services" onclick="smoothScrollTo('services')" class="nav-link">Services</a>
+                <a href="#portfolio" onclick="smoothScrollTo('portfolio')" class="nav-link">Portfolio</a>
+                <a href="#process" onclick="smoothScrollTo('process')" class="nav-link">Process</a>
+                <a href="#contact" onclick="smoothScrollTo('contact')" class="nav-link">Start Project</a>
+            </div>
+            
+        </div>
+    </nav>
+
+    <!-- Hero / Home -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="heading-font text-6xl md:text-7xl leading-none tracking-tighter mb-6">
+                    G M CUSTOM<br>CREATIONS
+                </h1>
+                <p class="text-3xl md:text-4xl text-[#C5A059] mb-8 tracking-wide">Custom Woodworking.<br>Handcrafted for Life.</p>
+                
+                <div class="max-w-xl mx-auto mb-12 text-lg leading-relaxed text-[#F5F5F4]/90"> 
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button onclick="smoothScrollTo('portfolio')" 
+                            class="px-8 py-4 border border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-[#111111] text-base tracking-widest transition-all">
+                        VIEW PORTFOLIO
+                    </button>
+                    <button onclick="smoothScrollTo('contact')" 
+                            class="px-8 py-4 bg-[#C5A059] text-[#111111] text-base tracking-widest hover:bg-white transition-all">
+                        START YOUR PROJECT
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest mb-2 opacity-70">SCROLL TO EXPLORE</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-[#C5A059] to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-28 bg-[#111111]">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-6 py-2 bg-white/5 text-[#C5A059] text-sm tracking-[3px]">WHAT WE CREATE</span>  
+                <h2 class="heading-font text-6xl mt-6 tracking-tighter">Our Craft</h2>
+                Bespoke woodworking studio creating timeless furniture, cabinetry, and unique pieces. 
+                    Every creation is handcrafted with exceptional care using the finest materials.
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-28 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <span class="text-[#C5A059] text-sm tracking-widest">SHOWCASE</span>
+                    <h2 class="heading-font text-6xl tracking-tighter">Portfolio</h2>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-3 mt-8 md:mt-0" id="portfolio-filters">
+                    <!-- JS populated -->
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="py-28 bg-[#111111]">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-20">
+                <span class="text-[#C5A059]">OUR APPROACH</span>
+                <h2 class="heading-font text-6xl mt-4 tracking-tighter">The Process</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-white/5 flex items-center justify-center text-4xl">01</div>
+                    <h3 class="text-2xl mb-4 heading-font">Discuss</h3>
+                    <p class="text-[#F5F5F4]/80">We discuss your ideas, requirements and vision in detail.</p>
+                </div>
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-white/5 flex items-center justify-center text-4xl">02</div>
+                    <h3 class="text-2xl mb-4 heading-font">Design</h3>
+                    <p class="text-[#F5F5F4]/80">We refine the concept, select premium materials and finalize every detail.</p>
+                </div>
+                <div class="process-step text-center">
+                    <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-white/5 flex items-center justify-center text-4xl">03</div>
+                    <h3 class="text-2xl mb-4 heading-font">Build</h3>
+                    <p class="text-[#F5F5F4]/80">Your piece is meticulously handcrafted and finished to the highest standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Start Project -->
+    <section id="contact" class="py-28 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <div class="sticky top-28">
+                        <h2 class="heading-font text-6xl tracking-tighter leading-none mb-8">Begin Your<br>Commission</h2>
+                        <p class="text-xl text-[#F5F5F4]/80 max-w-md">Every project starts with a conversation. Share your vision and we'll bring it to life.</p>
+                        
+                        <div class="mt-16 space-y-8 text-sm">
+                            <div>
+                                <div class="text-[#C5A059] mb-1">STUDIO</div>
+                                <div>Somewhere Beautiful, Coimbatore, India.</div>
+                            </div>
+                            <div>
+                                <div class="text-[#C5A059] mb-1">EMAIL</div>
+                                <a href="mailto:gmcustomcreations@gmail.com" class="hover:text-[#C5A059]">gmcustomcreations@gmail.com</a>
+                            </div>
+                            <div>
+                                <div class="text-[#C5A059] mb-1">PHONE</div>
+                                <a href="tel:+15551234567" class="hover:text-[#C5A059]">+91 98434 23369</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7">
+                    <form id="contact-form" class="space-y-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="block text-xs tracking-widest mb-3">YOUR NAME</label>
+                                <input type="text" id="name" required 
+                                       class="w-full bg-transparent border-b border-white/30 pb-4 focus:outline-none focus:border-[#C5A059] text-lg">
+                            </div>
+                            <div>
+                                <label class="block text-xs tracking-widest mb-3">EMAIL ADDRESS</label>
+                                <input type="email" id="email" required 
+                                       class="w-full bg-transparent border-b border-white/30 pb-4 focus:outline-none focus:border-[#C5A059] text-lg">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs tracking-widest mb-3">PHONE NUMBER</label>
+                            <input type="tel" id="phone" 
+                                   class="w-full bg-transparent border-b border-white/30 pb-4 focus:outline-none focus:border-[#C5A059] text-lg">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs tracking-widest mb-3">TELL US ABOUT YOUR PROJECT</label>
+                            <textarea id="message" rows="8" required
+                                      class="w-full bg-transparent border-b border-white/30 pb-4 focus:outline-none focus:border-[#C5A059] text-lg resize-y"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full py-8 bg-[#C5A059] text-[#111111] text-xl font-medium tracking-widest hover:bg-white transition-colors">
+                            SUBMIT PROJECT INQUIRY
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 text-center text-sm text-white/50">
+            <p>&copy; 2026 G M Custom Creations. All Rights Reserved.</p>
+            <p class="mt-2">Handcrafted with passion in the spirit of timeless design.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="relative max-w-[95%] max-h-[95%] flex items-center justify-center">
+            <button onclick="closeLightbox()" 
+                    class="absolute -top-12 right-0 text-white text-4xl hover:text-[#C5A059]">×</button>
+            <img id="lightbox-image" src="" alt="" class="max-h-[90vh] max-w-full object-contain shadow-2xl">
+            
+            <button onclick="prevImage()" 
+                    class="absolute left-8 text-6xl text-white/70 hover:text-white">‹</button>
+            <button onclick="nextImage()" 
+                    class="absolute right-8 text-6xl text-white/70 hover:text-white">›</button>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded
+        
+        function smoothScrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Sample data - easy to expand
+        const categories = [
+            { id: 'all', name: 'All' },
+            { id: 'furniture', name: 'Custom Furniture' },
+            { id: 'cabinets', name: 'Cabinets' },
+            { id: 'workspaces', name: 'Work Spaces' },
+            { id: 'utilities', name: 'Utilities' },
+            { id: 'woodart', name: 'Wood Art' },
+            { id: 'general', name: 'General' }
+        ];
+        
+        // Sample portfolio images - replace with real paths
+        let portfolioItems = [
+    {
+        "id": 1784100270144,
+        "category": "furniture",
+        "img": "images/furniture/Bedside Table.png",
+        "title": "Bedside Table",
+        "desc": "Custom furniture piece."
+    },
+    {
+        "id": 1784100270145,
+        "category": "furniture",
+        "img": "images/furniture/Demilune Console Table.png",
+        "title": "Demilune Console Table",
+        "desc": "Custom furniture piece."
+    },
+    {
+        "id": 1784100270146,
+        "category": "furniture",
+        "img": "images/furniture/Outdoor Swing.png",
+        "title": "Outdoor Swing",
+        "desc": "Custom furniture piece."
+    },
+    {
+        "id": 1784100270147,
+        "category": "furniture",
+        "img": "images/furniture/Solid Wood Dining Chair.png",
+        "title": "Solid Wood Dining Chair",
+        "desc": "Custom furniture piece."
+    },
+    {
+        "id": 1784100270145,
+        "category": "cabinets",
+        "img": "images/cabinets/Wardrobe.png",
+        "title": "Wardrobe",
+        "desc": "Custom cabinets piece."
+    },
+    {
+        "id": 1784100270145,
+        "category": "workspaces",
+        "img": "images/workspaces/Simple Computer Desk.png",
+        "title": "Simple Computer Desk",
+        "desc": "Custom workspaces piece."
+    },
+    {
+        "id": 1784100270146,
+        "category": "workspaces",
+        "img": "images/workspaces/Study Desk.png",
+        "title": "Study Desk",
+        "desc": "Custom workspaces piece."
+    },
+    {
+        "id": 1784100270147,
+        "category": "workspaces",
+        "img": "images/workspaces/Tool Chest.png",
+        "title": "Tool Chest",
+        "desc": "Custom workspaces piece."
+    },
+    {
+        "id": 1784100270148,
+        "category": "workspaces",
+        "img": "images/workspaces/Wooden Speaker Enclosures & Table.png",
+        "title": "Wooden Speaker Enclosures & Table",
+        "desc": "Custom workspaces piece."
+    },
+    {
+        "id": 1784100270149,
+        "category": "workspaces",
+        "img": "images/workspaces/Woodworkers Work Bench.png",
+        "title": "Woodworkers Work Bench",
+        "desc": "Custom workspaces piece."
+    },
+    {
+        "id": 1784100270146,
+        "category": "utilities",
+        "img": "images/utilities/Carpenter's Mallet.png",
+        "title": "Carpenter'S Mallet",
+        "desc": "Custom utilities piece."
+    },
+    {
+        "id": 1784100270147,
+        "category": "utilities",
+        "img": "images/utilities/Cutting Board.png",
+        "title": "Cutting Board",
+        "desc": "Custom utilities piece."
+    },
+    {
+        "id": 1784100270148,
+        "category": "utilities",
+        "img": "images/utilities/Spatula.png",
+        "title": "Spatula",
+        "desc": "Custom utilities piece."
+    },
+    {
+        "id": 1784100270149,
+        "category": "utilities",
+        "img": "images/utilities/Step Stool.png",
+        "title": "Step Stool",
+        "desc": "Custom utilities piece."
+    },
+    {
+        "id": 1784100270146,
+        "category": "woodart",
+        "img": "images/woodart/Dog Desk Lamp.png",
+        "title": "Dog Desk Lamp",
+        "desc": "Custom woodart piece."
+    },
+    {
+        "id": 1784100270147,
+        "category": "woodart",
+        "img": "images/woodart/LightHouse.png",
+        "title": "LightHouse",
+        "desc": "Custom woodart piece."
+    },
+    {
+        "id": 1784100270148,
+        "category": "woodart",
+        "img": "images/woodart/Mjölnir.png",
+        "title": "MjöLnir",
+        "desc": "Custom woodart piece."
+    },
+    {
+        "id": 1784100270149,
+        "category": "woodart",
+        "img": "images/woodart/Wooden Fish Pendant.png",
+        "title": "Wooden Fish Pendant",
+        "desc": "Custom woodart piece."
+    },
+    {
+        "id": 1784100270146,
+        "category": "general",
+        "img": "images/general/Altar.png",
+        "title": "Altar",
+        "desc": "Custom general piece."
+    },
+    {
+        "id": 1784100270147,
+        "category": "general",
+        "img": "images/general/Wooden Candle Stands.png",
+        "title": "Wooden Candle Stands",
+        "desc": "Custom general piece."
+    }
+];
+        
+        // Services data
+        const servicesData = [
+            {
+                id: 'furniture',
+                title: 'Custom Furniture',
+                desc: 'Bespoke tables, chairs, beds and more.',
+                img: 'images/services/furniture/Demilune Console Table.png'
+            },
+            {
+                id: 'cabinets',
+                title: 'Cabinetry',
+                desc: 'Kitchen, bathroom and built-ins.',
+                img: 'images/services/cabinets/Wardrobe.png'
+            },
+            {
+                id: 'workspaces',
+                title: 'Work Spaces',
+                desc: 'Desks, offices and creative studios.',
+                img: 'images/services/workspaces/Woodworkers Work Bench.png'
+            },
+            {
+                id: 'utilities',
+                title: 'Utility Projects',
+                desc: 'Shelving, storage and functional pieces.',
+                img: 'images/services/utilities/spatula.png'
+            },
+            {
+                id: 'woodart',
+                title: 'Wood Art',
+                desc: 'Sculptures, wall art and decorative pieces.',
+                img: 'images/services/woodart/Mjölnir.png'
+            },
+            {
+                id: 'general',
+                title: 'One-off Creations',
+                desc: 'Unique custom commissions of any kind.',
+                img: 'images/services/general/Altar.png'
+            },
+        ];
+        
+        // Populate services
+        function populateServices() {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+            
+            servicesData.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card group cursor-pointer bg-white/5 overflow-hidden';
+                card.innerHTML = `
+                    <div class="relative h-80">
+                        <img src="${service.img}" alt="${service.title}" 
+                             class="w-full h-full object-cover gallery-img">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-3xl heading-font mb-3">${service.title}</h3>
+                        <p class="text-[#F5F5F4]/70">${service.desc}</p>
+                    </div>
+                `;
+                card.onclick = () => showCategoryGallery(service.id);
+                grid.appendChild(card);
+            });
+        }
+        
+        // Populate portfolio filters and grid
+        let currentFilter = 'all';
+        let currentLightboxIndex = 0;
+        let filteredItems = [];
+        
+        function populatePortfolio(filter = 'all') {
+            currentFilter = filter;
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+            
+            filteredItems = filter === 'all' ? 
+                [...portfolioItems] : 
+                portfolioItems.filter(item => item.category === filter);
+            
+            filteredItems.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'group cursor-pointer overflow-hidden';
+                div.innerHTML = `
+                    <div class="relative aspect-[4/3] bg-black">
+                        <img src="${item.img}" alt="${item.title}" 
+                             class="w-full h-full object-cover gallery-img">
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 p-6 translate-y-6 group-hover:translate-y-0 transition-all">
+                            <div class="text-sm text-[#C5A059]">${item.category.toUpperCase()}</div>
+                            <div class="text-xl heading-font">${item.title}</div>
+                        </div>
+                    </div>
+                `;
+                div.onclick = () => openLightbox(index);
+                grid.appendChild(div);
+            });
+        }
+        
+        function populateFilters() {
+            const container = document.getElementById('portfolio-filters');
+            container.innerHTML = '';
+            
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `px-8 py-3 text-sm tracking-widest border transition-all ${currentFilter === cat.id ? 'border-[#C5A059] text-[#C5A059]' : 'border-white/20 hover:border-white/40'}`;
+                btn.textContent = cat.name;
+                btn.onclick = () => populatePortfolio(cat.id);
+                container.appendChild(btn);
+            });
+        }
+        
+        // Lightbox
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-image');
+            img.src = filteredItems[index].img;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'visible';
+        }
+        
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % filteredItems.length;
+            document.getElementById('lightbox-image').src = filteredItems[currentLightboxIndex].img;
+        }
+        
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + filteredItems.length) % filteredItems.length;
+            document.getElementById('lightbox-image').src = filteredItems[currentLightboxIndex].img;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            }
+        });
+        
+        // Form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your project inquiry has been received. We will contact you shortly.');
+            this.reset();
+        });
+        
+        // Service card click handler - goes to portfolio and filters
+        function showCategoryGallery(category) {
+            // Smooth scroll to portfolio section
+            smoothScrollTo('portfolio');
+            
+            // Auto-filter after scroll completes
+            setTimeout(() => {
+                populatePortfolio(category);
+            }, 700);
+        }
+        
+        // Initialize everything
+        function init() {
+            populateServices();
+            populateFilters();
+            populatePortfolio('all');
+            
+            // Mobile menu placeholder
+            console.log('%cG M Custom Creations website initialized successfully.', 'color: #C5A059; font-size: 13px');
+        }
+        
+        window.onload = init;
+        
+        // Back to top
+        const backToTop = document.createElement('button');
+        backToTop.innerHTML = '↑';
+        backToTop.className = 'fixed bottom-8 right-8 w-12 h-12 bg-[#C5A059] text-[#111111] rounded-full flex items-center justify-center text-2xl shadow-xl hidden md:flex';
+        backToTop.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+        document.body.appendChild(backToTop);
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
